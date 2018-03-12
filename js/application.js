@@ -20,6 +20,8 @@ LIBRARY.getLibrary = function(){
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
 	  $('#signin').modal('show');
+	} else {
+	  console.log('getLibrary success');
 	}
       }
     };
