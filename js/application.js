@@ -12,6 +12,10 @@ LIBRARY.getLibrary = function(){
     let xhrArgs = {
       type: 'GET',
       url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
+      crossDomain: true,
+        xhrFields: {
+        withCredentials: true
+      },
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
 	  $('#signin').modal('show');
