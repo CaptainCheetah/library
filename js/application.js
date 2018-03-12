@@ -42,10 +42,20 @@ LIBRARY.signin = function(){
 	$('#signin').modal('show');
       },
       complete: (jqXHR, statusText) => {
-        console.log('signin complete');
-	console.log(jqXHR);
-	console.log(statusText);
-	$('#signin').modal('hide');
+	$.ajax({
+	  type: 'GET',
+	  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,	
+          error: () => {
+            console.log('signin error');
+	    $('#signin').modal('show');
+          },
+	  complete: () => {
+            console.log('signin complete');
+            console.log(jqXHR);
+	    console.log(statusText);
+	    $('#signin').modal('hide');
+	  }
+	});
       }
     };
     
