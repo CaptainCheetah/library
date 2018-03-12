@@ -41,8 +41,11 @@ LIBRARY.signin = function(){
         console.log('signin error');
 	$('#signin').modal('show');
       },
-      complete: () => {
+      complete: (jqXHR, statusText) => {
         console.log('signin complete');
+	console.log(jqXHR);
+	console.log(statusText);
+	$('#signin').modal('hide');
       }
     };
     
