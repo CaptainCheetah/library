@@ -41,9 +41,6 @@ LIBRARY.signin = function(){
 	$('#signin').modal('show');
       },
       complete: (jqXHR, statusText) => {
-        console.log(jqXHR.getAllResponseHeaders());
-	$('#signin').modal('hide');
-/*
 	$.ajax({
 	  type: 'GET',
 	  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,	
@@ -53,12 +50,10 @@ LIBRARY.signin = function(){
           },
 	  complete: () => {
             console.log('signin complete');
-            console.log(jqXHR);
-	    console.log(statusText);
+            console.log(jqXHR.getAllResponseHeaders());
 	    $('#signin').modal('hide');
 	  }
 	});
-*/
       }
     };
     
