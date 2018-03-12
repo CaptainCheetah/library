@@ -11,11 +11,7 @@ LIBRARY.isAuth = function(){
 LIBRARY.getLibrary = function(){
     let xhrArgs = {
       type: 'GET',
-      crossDomain: true,
-      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books`,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
+      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
 	  $('#signin').modal('show');
