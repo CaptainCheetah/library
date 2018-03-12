@@ -42,7 +42,7 @@ LIBRARY.signin = function(){
 	$('#signin').modal('show');
       },
       complete: (jqXHR, statusText) => {
-        console.log(jqXHR);
+        console.log(jqXHR.getAllResponseHeaders());
 /*
 	$.ajax({
 	  type: 'GET',
