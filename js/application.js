@@ -15,14 +15,9 @@ LIBRARY.getLibrary = function(){
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      success: () => {
-        console.log('success');
-      },
-      error: () => {
-        console.log('error');
-      },
-      complete: () => {
+      complete: (jqXHR) => {
         console.log('complete');
+	consle.log(jqXHR);
       }
     };
     
