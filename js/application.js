@@ -11,7 +11,6 @@ LIBRARY.isAuth = function(){
 LIBRARY.getLibrary = function(){
     let xhrArgs = {
       type: 'GET',
-      xhrFields: { withCredentials: true },
       crossDomain: true,
       url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books`,
       headers: {
