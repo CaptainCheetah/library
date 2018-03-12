@@ -76,8 +76,8 @@ LIBRARY.signout = function(){
 
 LIBRARY.init = function(){
   LIBRARY.getLibrary();
-  $('#signin').click(LIBRARY.signin);
-  $('#signout').click(LIBRARY.signout);
+  $('#signinButton').click(LIBRARY.signin);
+  $('#signoutButton').click(LIBRARY.signout);
   console.log('Classroom library loaded');
 }
 
