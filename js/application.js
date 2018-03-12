@@ -17,7 +17,7 @@ LIBRARY.getLibrary = function(){
       },
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
-		$('#signin').modal('show');
+	  $('#signin').modal('show');
 	}
       }
     };
@@ -26,47 +26,56 @@ LIBRARY.getLibrary = function(){
 }
 
 // cloudant sign in (get cookie)
-LIBRARY.signin = function(u,p){
-  let username = ((u && typeof u === 'string') ? u : false);
-  let password = ((p && typeof p === 'string') ? p : false);
-
-  if (username && password) {
+LIBRARY.signin = function(){
     let xhrArgs = {
       type: 'POST',
       url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      data: {
-        name: username,
-        password: password
-      },
+      data: $("form.form-signin").serialize(),
       success: () => {
-        console.log('success');
+        console.log('signin success');
       },
       error: () => {
-        console.log('error');
+        console.log('signin error');
+	$('#signin').modal('show');
       },
       complete: () => {
-        console.log('complete');
+        console.log('signin complete');
       }
     };
     
     let auth = $.ajax(xhrArgs);
-  } else {
-   console.log('Credentials not provided'); 
-  }
 }
 
 // cloudant sign out (delete cookie)
 LIBRARY.signout = function(){
-
+    let xhrArgs = {
+      type: 'DELETE',
+      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      success: () => {
+        console.log('signout success');
+      },
+      error: () => {
+        console.log('signout error');
+      },
+      complete: () => {
+        console.log('signout complete');
+      }
+    };
+    
+    let auth = $.ajax(xhrArgs);
 }
 
 LIBRARY.init = function(){
-  console.log('getLibrary');
   LIBRARY.getLibrary();
-	console.log('Classroom library loaded');
+  $('form.form-signin button[type="submit"]').click(LIBRARY.signin);
+  $('#signout').click(LIBRARY.signout);
+  console.log('Classroom library loaded');
 }
 
 $(document).ready(() => {
