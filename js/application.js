@@ -16,8 +16,9 @@ LIBRARY.getLibrary = function(){
         "Content-Type": "application/x-www-form-urlencoded",
       },
       complete: (jqXHR) => {
-        console.log('complete');
-	console.log(jqXHR);
+        if (jqXHR.status === 401){
+		$('#signin').modal('show');
+	}
       }
     };
     
