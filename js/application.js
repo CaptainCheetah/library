@@ -11,7 +11,7 @@ LIBRARY.isAuth = function(){
 LIBRARY.getLibrary = function(){
     let xhrArgs = {
       type: 'GET',
-      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
+      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
 	  $('#signin').modal('show');
@@ -41,19 +41,7 @@ LIBRARY.signin = function(){
 	$('#signin').modal('show');
       },
       complete: (jqXHR, statusText) => {
-	$.ajax({
-	  type: 'GET',
-	  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,	
-          error: () => {
-            console.log('signin error');
-	    $('#signin').modal('show');
-          },
-	  complete: () => {
-            console.log('signin complete');
-            console.log(jqXHR.getAllResponseHeaders());
-	    $('#signin').modal('hide');
-	  }
-	});
+        console.log('signin complete');
       }
     };
     
