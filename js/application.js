@@ -17,7 +17,7 @@ LIBRARY.getLibrary = function(){
       },
       complete: (jqXHR) => {
         console.log('complete');
-	consle.log(jqXHR);
+	console.log(jqXHR);
       }
     };
     
