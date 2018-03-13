@@ -13,8 +13,8 @@ LIBRARY.getLibrary = function(){
       type: 'GET',
       url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
       crossDomain: true,
-      xhrFields: {
-        withCredentials: true
+      beforeSend: function(xhr){
+        xhr.withCredentials = true
       },
       complete: (jqXHR) => {
         if (jqXHR.status === 401){
