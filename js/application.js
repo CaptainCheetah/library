@@ -5,7 +5,7 @@ LIBRARY.cloudantconfig = {
 
 LIBRARY.getResource = function(params){
 	// resource url
-	let url = ((params && params.url) ? params.url : false );
+	let resource = ((params && params.url) ? params.url : false );
 	let username = (($('form.form-signin input[name="name"]')) ? $('form.form-signin input[name="name"]').val() : false);
 	let password = (($('form.form-signin input[name="password"]')) ? $('form.form-signin input[name="password"]').val() : false);
 	let output = false;
@@ -13,6 +13,7 @@ LIBRARY.getResource = function(params){
 		if (url) {
 			$.ajax({
 				type: 'GET',
+				url: resource,
 			  headers: {
 			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`,
 			    'Cache-Control': 'no-cache'
