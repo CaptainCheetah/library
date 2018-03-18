@@ -9,6 +9,13 @@ LIBRARY.getResource = function(params){
 	let username = (($('form.form-signin input[name="name"]')) ? $('form.form-signin input[name="name"]').val() : false);
 	let password = (($('form.form-signin input[name="password"]')) ? $('form.form-signin input[name="password"]').val() : false);
 	let output = false;
+	
+	console.log('LIBRARY.getResource');
+	console.log(username);
+	console.log(password);
+	console.log(`${username}:${password}`);
+	console.log(`Basic ${window.btoa(`${username}:${password}`)}`);
+	
 	let promise = new Promise((resolve, reject) => {
 		if (resource) {
 			$.ajax({
