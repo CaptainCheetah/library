@@ -10,11 +10,11 @@ LIBRARY.getResource = function(params){
 	let password = (($('form.form-signin input[name="password"]')) ? $('form.form-signin input[name="password"]').val() : false);
 	let output = false;
 	let promise = new Promise((resolve, reject) => {
-		if (url) {
+		if (resource) {
 			$.ajax({
 				type: 'GET',
 				url: resource,
-			  headers: {
+			  	headers: {
 			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`,
 			    'Cache-Control': 'no-cache'
 			  },
