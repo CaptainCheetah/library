@@ -15,7 +15,7 @@ LIBRARY.getResource = function(params){
 				type: 'GET',
 			  headers: {
 			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`,
-			    Cache-Control: "no-cache"
+			    'Cache-Control': 'no-cache'
 			  },
 				success: (response) => {
 					resolve(response);
