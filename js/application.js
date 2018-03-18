@@ -19,11 +19,10 @@ LIBRARY.getResource = function(params){
 	let promise = new Promise((resolve, reject) => {
 		if (resource) {
 			$.ajax({
-				type: 'GET',
-				url: resource,
-			  	headers: {
-			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`,
-			    'Cache-Control': 'no-cache'
+			  type: 'GET',
+			  url: resource,
+			  headers: {
+			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`
 			  },
 				success: (response) => {
 					resolve(response);
