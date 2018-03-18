@@ -25,6 +25,8 @@ LIBRARY.getResource = function(params){
 					reject(error);
 				}
 			});
+		} else {
+			reject(new Error('No URL provided'));
 		}
 	});
 
