@@ -3,6 +3,14 @@ LIBRARY.cloudantconfig = {
   account: '2a65f301-9b7d-4107-8edf-50c8e4747c00-bluemix'
 };
 
+LIBRARY.create = function(params){
+	// type - book | borrower
+}
+
+LIBRARY.delete = function(params){
+	// type - book | borrower
+}
+
 LIBRARY.getResource = function(params){
 	// resource url
 	let resource = ((params && params.url) ? params.url : false );
