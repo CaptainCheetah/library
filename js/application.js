@@ -70,9 +70,11 @@ LIBRARY.getCredentials = function(){
   if (LIBRARY.storage.getItem("LIBRARY.username") && LIBRARY.storage.getItem("LIBRARY.password")){
     $("form.form-credentials input[name='username']").val(LIBRARY.storage.getItem("LIBRARY.username"));
     $("form.form-credentials input[name='password']").val(LIBRARY.storage.getItem("LIBRARY.password"));
-  } else {
-    $('#credentials').modal('show');
+    return true;
   }
+	
+  $('#credentials').modal('show');
+  return false;
 }
 
 // cloudant sign in (get cookie)
@@ -104,7 +106,34 @@ LIBRARY.init = function(){
     LIBRARY.saveCredentials();
     $('#credentials').modal('hide');
   });
-  LIBRARY.getCredentials();
+if (LIBRARY.getCredentials()){
+  $('#books').DataTable( {
+    "ajax": {
+      "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
+      "dataSrc": "rows",
+      "data": function ( d ) {
+        d.limit = d.length;
+        d.skip =d.start;
+        if(d.search && d.search["value"] && d.search["value"] != "" ){
+          d.key='"'+d.search["value"]+'"';     
+          delete d.search["value"];
+          delete d.search["regex"];          
+        }
+        console.log(d);
+      },
+      "beforeSend": function (xhr) {
+        xhr.setRequestHeader ("Authorization", "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`));
+      },
+       "dataFilter": function(data) {
+        console.log(data);
+        var data = JSON.parse(data);
+        data['recordsTotal']= data["total_rows"];
+        data['recordsFiltered']= data["total_rows"];
+        return JSON.stringify(data);
+      }
+    }
+  });
+}
   console.log('Classroom library loaded');
 }
 
