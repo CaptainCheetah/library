@@ -13,10 +13,10 @@ LIBRARY.create = function(params){
 	if (targetDB && dataObj) {
 		$.ajax({
 		  type: 'POST',
-		  contentType: 'application/json',
 		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
 		  data: JSON.stringify(dataObj),
 		  headers: {
+		    "Content-Type": "application/json",
 		    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
 		  },
 			success: (response) => {
