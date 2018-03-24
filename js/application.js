@@ -51,6 +51,11 @@ LIBRARY.getResource = function(params){
 
 LIBRARY.saveCredentials = function(){
   $.each($("form.form-credentials").serializeArray(), function(idx, cred){
+	  consle.log('saveCredentials');
+	  console.log(cred);
+	  console.log(Object.keys(cred));
+	  console.log(Object.keys(cred)[0]);
+	  console.log(cred[Object.keys(cred)[0]]);
     LIBRARY.storage.setItem(Object.keys(cred)[0], cred[Object.keys(cred)[0]]);
   });
 }
