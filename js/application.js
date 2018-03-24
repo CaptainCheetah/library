@@ -133,7 +133,7 @@ if (LIBRARY.getCredentials()){
 		  // {"data":"doc._id"},
 		  {"data":"doc.title","title":"Title"},
 		  {"data":"doc.author","title":"Author"},
-		  {"title":"Status", "defaultContent": "-"},
+		  {"title":"Status", "defaultContent": "<i class='material-icons text-success'>check_circle</i>"},
 		  {"title":"Actions", "render": function(){
 		  	return "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons'>delete</i></button><button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>";
 		  }},
