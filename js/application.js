@@ -6,7 +6,7 @@ LIBRARY.cloudantconfig = {
 LIBRARY.storage = window.localStorage;
 
 LIBRARY.create = function(params){
-	// type - book | borrower
+   // POST to ${DATABASE} with ${JSONOBJECT}
 }
 
 LIBRARY.delete = function(params){
@@ -53,6 +53,17 @@ LIBRARY.getResource = function(params){
 	});
 
 	return promise;
+}
+
+LIBRARY.getFormData = function($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
 }
 
 LIBRARY.saveCredentials = function(){
