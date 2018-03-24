@@ -135,7 +135,7 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.author","title":"Author"},
 		  {"title":"Status", "defaultContent": "-"},
 		  {"title":"Actions", "render": function(){
-		  	return "<i class='material-icons'>delete</i> <i class='material-icons'>edit</i>";
+		  	return "<button type='button' class='btn btn-outline-danger'><i class='material-icons'>delete</i></button><button type='button' class='btn btn-outline-secondary'><i class='material-icons'>edit</i></button>";
 		  }},
 		]
   });
