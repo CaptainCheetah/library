@@ -140,8 +140,8 @@ if (LIBRARY.getCredentials()){
     },
 		"columns":[
 		  // {"data":"doc._id"},
-		  {"data":"doc.title","name":"Title"},
-		  {"data":"doc.author","name":"Author"},
+		  {"data":"doc.title","title":"Title"},
+		  {"data":"doc.author","title":"Author"},
 		]
   });
 }
