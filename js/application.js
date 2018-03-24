@@ -8,8 +8,6 @@ LIBRARY.storage = window.localStorage;
 LIBRARY.create = function(params){
 	let targetDB = ((params && params.target) ? params.target : false );
 	let dataObj = ((params && params.data) ? params.data : false );
-	
-	console.log(JSON.stringify(dataObj));
 
 	let promise = new Promise((resolve, reject) => {
 	if (targetDB && dataObj) {
@@ -17,7 +15,7 @@ LIBRARY.create = function(params){
 		  type: 'POST',
 		  contentType: 'application/json',
 		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
-		  data: dataObj,
+		  data: JSON.stringify(dataObj),
 		  headers: {
 		    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
 		  },
