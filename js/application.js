@@ -29,7 +29,7 @@ LIBRARY.create = function(params){
 			}
 		});
 	} else {
-		reject(new Error('No URL provided'));
+		reject(new Error('Missing parameters'));
 	}
 	});
 
@@ -95,7 +95,7 @@ LIBRARY.init = function(){
 		$('form.form-book')[0].reset();
 	})
 	.catch(function(error){
-		alert('ERROR: ' + error.message);
+		alert('ERROR: ' + error);
 	});
   });
 if (LIBRARY.getCredentials()){
