@@ -10,7 +10,7 @@ LIBRARY.create = function(params){
 	let dataObj = ((params && params.data) ? params.data : false );
 
 	let promise = new Promise((resolve, reject) => {
-	if (resource) {
+	if (targetDB && dataObj) {
 		$.ajax({
 		  type: 'POST',
 		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
