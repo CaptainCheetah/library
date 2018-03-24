@@ -13,6 +13,12 @@ LIBRARY.delete = function(params){
 	// type - book | borrower
 }
 
+LIBRARY.update = function(params){
+}
+
+LIBRARY.read = function(params){
+}
+
 LIBRARY.getResource = function(params){
 	// resource url
 	let resource = ((params && params.url) ? params.url : false );
