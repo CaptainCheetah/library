@@ -135,7 +135,7 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.author","title":"Author"},
 		  {"title":"Status", "defaultContent": "-"},
 		  {"title":"Actions", "render": function(){
-		  	return "actions";
+		  	return "<i class='material-icons'>delete</i> <i class='material-icons'>edit</i>";
 		  }},
 		]
   });
