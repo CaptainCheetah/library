@@ -81,6 +81,10 @@ LIBRARY.signin = function(){
 }
 
 LIBRARY.init = function(){
+  $('#credentialsButton').click(function(){
+    LIBRARY.saveCredentials();
+    $('#credentials').modal('hide');
+  });
   console.log('Classroom library loaded');
 }
 
