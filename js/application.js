@@ -50,10 +50,12 @@ LIBRARY.getResource = function(params){
 }
 
 LIBRARY.saveCredentials = function(){
-	console.log($("form.form-credentials").serializeArray());
+  console.log($("form.form-credentials").serializeArray());
+  console.log('Save credentials to localStorage');
 }
 
 LIBRARY.getCredentials = function(){
+  console.log('Get credentials from localStorage');
 }
 
 // cloudant sign in (get cookie)
@@ -85,6 +87,7 @@ LIBRARY.init = function(){
     LIBRARY.saveCredentials();
     $('#credentials').modal('hide');
   });
+  LIBRARY.getCredentials();
   console.log('Classroom library loaded');
 }
 
