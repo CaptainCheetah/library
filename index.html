@@ -35,15 +35,15 @@
       </div>
     </nav>
     <div class="container">
-        <button type="button" class="btn btn-outline-secondary" id="createBook">Add book</button><br /><br />
+        <button type="button" class="btn btn-outline-secondary" id="addBook" data-toggle="modal" data-target="#book">Add book</button><br /><br />
 	<!--
         <button type="button" class="btn btn-outline-secondary" id="createBorrower">Create borrower</button>
 	-->
 	<table id="books" class="display" width="100%"></table>
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="credentials" tabindex="-1" role="dialog" aria-labelledby="credentialsinLabel" aria-hidden="true">
+<!-- Credentials Modal -->
+<div class="modal fade" id="credentials" tabindex="-1" role="dialog" aria-labelledby="credentialsLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,17 +65,50 @@
 		</label>
 	</div>
 	-->
-	<button class="btn btn-lg btn-primary btn-block" id="credentialsButton" type="button">Save credentials</button>
 	</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	<button class="btn btn-lg btn-primary btn-block" id="credentialsButton" type="button">Save credentials</button>   
       </div>
     </div>
   </div>
 </div>
 
-    <!-- Optional JavaScript -->
+<!-- Book Modal -->
+<div class="modal fade" id="book" tabindex="-1" role="dialog" aria-labelledby="bookLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookLabel">Add book details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	<form class="form-book">
+	  <div class="form-group row">
+	    <label for="title" class="col-sm-2 col-form-label">Title</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" id="title" placeholder="Title">
+	    </div>
+	  </div>
+	  <div class="form-group row">
+	    <label for="author" class="col-sm-2 col-form-label">Author</label>
+	    <div class="col-sm-10">
+	      <input class="form-control" id="author" placeholder="Author">
+	    </div>
+	  </div>
+	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	<button class="btn btn-lg btn-primary btn-block" id="addBookButton" type="button">Add book to Library</button>
+      </div>
+    </div>
+  </div>
+</div>
+	  
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
