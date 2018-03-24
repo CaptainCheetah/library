@@ -19,7 +19,7 @@ LIBRARY.create = function(params){
 		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
 		  data: dataObj,
 		  headers: {
-		    Authorization: `Basic ${window.btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)}`
+		    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
 		  },
 			success: (response) => {
 				resolve(response);
