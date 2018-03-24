@@ -85,7 +85,7 @@ LIBRARY.init = function(){
   $('#addBookButton').click(function(){
   	LIBRARY.create({
 	  target: 'books',
-	  data: LIBRARY.getFormData($('form.form-book'));
+	  data: LIBRARY.getFormData($('form.form-book'))
 	})
 	.then(function(){
 		$('#book').modal('hide');
