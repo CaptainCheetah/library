@@ -61,8 +61,9 @@ LIBRARY.deleteCredentials = function(){
 
 LIBRARY.getCredentials = function(){
   console.log('Get credentials from localStorage');
-  if (LIBRARY.storage['LIBRARY.username'] && LIBRARY.storage['LIBRARY.password']){
-    console.log('Credentials saved');
+  if (LIBRARY.storage.getItem("LIBRARY.username") && LIBRARY.getItem("LIBRARY.password")){
+    $("form.form-credentials input[name='username']").val(LIBRARY.storage.getItem("LIBRARY.username"));
+    $("form.form-credentials input[name='password']").val(LIBRARY.storage.getItem("LIBRARY.password"));
   } else {
     $('#credentials').modal('show');
   }
