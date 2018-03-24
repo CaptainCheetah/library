@@ -113,6 +113,7 @@ if (LIBRARY.getCredentials()){
             "searching": false,
             "processing": true,
             "serverSide": true,
+	  "lengthChange": false,
     "ajax": {
       "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
       "dataSrc": "rows",
