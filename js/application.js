@@ -61,6 +61,11 @@ LIBRARY.deleteCredentials = function(){
 
 LIBRARY.getCredentials = function(){
   console.log('Get credentials from localStorage');
+  if (LIBRARY.storage['LIBRARY.username'] && LIBRARY.storage['LIBRARY.password']){
+    console.log('Credentials saved');
+  } else {
+    $('#credentials').modal('show');
+  }
 }
 
 // cloudant sign in (get cookie)
