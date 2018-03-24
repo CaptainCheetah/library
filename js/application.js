@@ -142,7 +142,6 @@ if (LIBRARY.getCredentials()){
 		  // {"data":"doc._id"},
 		  {"data":"doc.title","title":"Title"},
 		  {"data":"doc.author","title":"Author"},
-		  {"data":"doc.status","title":"Status"},
 		]
   });
 }
