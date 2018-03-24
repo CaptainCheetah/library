@@ -135,7 +135,7 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.author","title":"Author"},
 		  {"title":"Status", "defaultContent": "-"},
 		  {"title":"Actions", "render": function(){
-		  	return "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons md-18'>delete</i></button><button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons md-18'>edit</i></button>";
+		  	return "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons'>delete</i></button><button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>";
 		  }},
 		]
   });
