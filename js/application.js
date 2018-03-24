@@ -131,7 +131,12 @@ if (LIBRARY.getCredentials()){
         data['recordsFiltered']= data["total_rows"];
         return JSON.stringify(data);
       }
-    }
+    },
+		"columns":[
+		  {"data":"doc._id"},
+		  {"data":"doc.title"},
+		  {"data":"doc.author"},
+		]
   });
 }
   console.log('Classroom library loaded');
