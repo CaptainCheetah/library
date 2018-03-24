@@ -8,11 +8,14 @@ LIBRARY.storage = window.localStorage;
 LIBRARY.create = function(params){
 	let targetDB = ((params && params.target) ? params.target : false );
 	let dataObj = ((params && params.data) ? params.data : false );
+	
+	console.log(dataObj);
 
 	let promise = new Promise((resolve, reject) => {
 	if (targetDB && dataObj) {
 		$.ajax({
 		  type: 'POST',
+		  contentType: 'application/json',
 		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
 		  data: dataObj,
 		  headers: {
