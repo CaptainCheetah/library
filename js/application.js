@@ -6,7 +6,31 @@ LIBRARY.cloudantconfig = {
 LIBRARY.storage = window.localStorage;
 
 LIBRARY.create = function(params){
-   // POST to ${DATABASE} with ${JSONOBJECT}
+	let targetDB = ((params && params.target) ? params.target : false );
+	let dataObj = ((params && params.data) ? params.data : false );
+
+	let promise = new Promise((resolve, reject) => {
+	if (resource) {
+		$.ajax({
+		  type: 'POST',
+		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
+		  data: dataObj,
+		  headers: {
+		    Authorization: `Basic ${window.btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)}`
+		  },
+			success: (response) => {
+				resolve(response);
+			},
+			error: (error) => {
+				reject(error);
+			}
+		});
+	} else {
+		reject(new Error('No URL provided'));
+	}
+	});
+
+	return promise;
 }
 
 LIBRARY.delete = function(params){
@@ -17,42 +41,6 @@ LIBRARY.update = function(params){
 }
 
 LIBRARY.read = function(params){
-}
-
-LIBRARY.getResource = function(params){
-	// resource url
-	let resource = ((params && params.url) ? params.url : false );
-	let username = (($('form.form-signin input[name="name"]')) ? $('form.form-signin input[name="name"]').val() : false);
-	let password = (($('form.form-signin input[name="password"]')) ? $('form.form-signin input[name="password"]').val() : false);
-	let output = false;
-	
-	console.log('LIBRARY.getResource');
-	console.log(username);
-	console.log(password);
-	console.log(`${username}:${password}`);
-	console.log(`Basic ${window.btoa(`${username}:${password}`)}`);
-	
-	let promise = new Promise((resolve, reject) => {
-		if (resource) {
-			$.ajax({
-			  type: 'GET',
-			  url: resource,
-			  headers: {
-			    Authorization: `Basic ${window.btoa(`${username}:${password}`)}`
-			  },
-				success: (response) => {
-					resolve(response);
-				},
-				error: (error) => {
-					reject(error);
-				}
-			});
-		} else {
-			reject(new Error('No URL provided'));
-		}
-	});
-
-	return promise;
 }
 
 LIBRARY.getFormData = function($form){
@@ -88,34 +76,24 @@ LIBRARY.getCredentials = function(){
   return false;
 }
 
-// cloudant sign in (get cookie)
-LIBRARY.signin = function(){
-    let xhrArgs = {
-      type: 'POST',
-      url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      data: $("form.form-signin").serialize(),
-      success: () => {
-        console.log('signin success');
-      },
-      error: () => {
-        console.log('signin error');
-				$('#signin').modal('show');
-      },
-      complete: (jqXHR, statusText) => {
-        console.log('signin complete');
-      }
-    };
-
-    let auth = $.ajax(xhrArgs);
-}
-
 LIBRARY.init = function(){
   $('#credentialsButton').click(function(){
     LIBRARY.saveCredentials();
     $('#credentials').modal('hide');
+  });
+	
+  $('#addBookButton').click(function(){
+  	LIBRARY.create({
+	  target: 'books',
+	  data: LIBRARY.getFormData($('form.form-book'));
+	})
+	.then(function(){
+		$('#book').modal('hide');
+		$('form.form-book')[0].reset();
+	})
+	.catch(function(error){
+		alert('ERROR: ' + error.message);
+	});
   });
 if (LIBRARY.getCredentials()){
   $('#books').DataTable( {
