@@ -9,7 +9,7 @@ LIBRARY.create = function(params){
 	let targetDB = ((params && params.target) ? params.target : false );
 	let dataObj = ((params && params.data) ? params.data : false );
 	
-	console.log(dataObj);
+	console.log(JSON.stringify(dataObj));
 
 	let promise = new Promise((resolve, reject) => {
 	if (targetDB && dataObj) {
@@ -95,7 +95,8 @@ LIBRARY.init = function(){
 		$('form.form-book')[0].reset();
 	})
 	.catch(function(error){
-		alert('ERROR: ' + error);
+		console.log(error);
+		alert('ERROR');
 	});
   });
 if (LIBRARY.getCredentials()){
