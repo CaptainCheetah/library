@@ -108,6 +108,11 @@ LIBRARY.init = function(){
   });
 if (LIBRARY.getCredentials()){
   $('#books').DataTable( {
+	  
+            "bSort" : false,  //sorting disabled
+            "searching": false,
+            "processing": true,
+            "serverSide": true,
     "ajax": {
       "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
       "dataSrc": "rows",
@@ -133,7 +138,7 @@ if (LIBRARY.getCredentials()){
       }
     },
 		"columns":[
-		  {"data":"doc._id"},
+		  // {"data":"doc._id"},
 		  {"data":"doc.title"},
 		  {"data":"doc.author"},
 		]
