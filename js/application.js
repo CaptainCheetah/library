@@ -99,7 +99,9 @@ LIBRARY.view = function(obj){
 	if (docid) {
 	 LIBRARY.qrOpts.text = docid;
 	 let el = kjua(LIBRARY.qrOpts);
-	 $('#viewDetails').empty().append(el);
+	 $('#qrCode').empty().append(el);
+		
+	 $('#viewDetails').empty().html('View details');
 	 $('#view').modal('show');
 	}
 }
