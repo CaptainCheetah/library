@@ -103,7 +103,7 @@ if (LIBRARY.getCredentials()){
             "bSort" : false,  //sorting disabled
             "searching": false,
             "processing": true,
-            "serverSide": true,
+            "serverSide": false,
 	  "lengthChange": false,
     "ajax": {
       "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
@@ -129,14 +129,11 @@ if (LIBRARY.getCredentials()){
         return JSON.stringify(data);
       }
     },
-	  "columnDefs": [
-    { "searchable": false, "targets": 3 },
-		  {"orderable": false, "targets": 3},
-  ],
+
 		"columns":[
 		  {"data":"doc.title","title":"Title"},
 		  {"data":"doc.author","title":"Author"},
-		  {"title":"Status", "render": function(){
+		  {"data":"doc.status","title":"Status", "render": function(){
 		    return "<i class='material-icons text-success'>check_circle</i>";
 		  }},
 		  {"data":"doc._id", "title":"Actions", "render": function(){
