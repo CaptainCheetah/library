@@ -164,9 +164,6 @@ if (LIBRARY.getCredentials()){
 		"columns":[
 		  {"data":"doc.title","title":"Title"},
 		  {"data":"doc.author","title":"Author"},
-		  // {"data":"doc.status","title":"Status", "render": function(){
-		  //  return "<i class='material-icons text-success'>check_circle</i>";
-		  // }},
 		  {"data":"doc._id","title":"Actions", "render": function(data, type, row, meta){
 		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
 		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
