@@ -122,6 +122,7 @@ LIBRARY.init = function(){
 	.then(function(){
 		$('#book').modal('hide');
 		$('form.form-book')[0].reset();
+		$('#books').DataTable().ajax.reload();
 	})
 	.catch(function(error){
 		console.log(error);
