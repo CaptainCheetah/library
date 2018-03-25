@@ -13,14 +13,14 @@ LIBRARY.qrOpts = {
   fill: '#000',
   back: '#fff',
   // text: '${CONTENT}',
-  rounded: 0,
+  rounded: 3,
   quiet: 1,
   mode: 'label',
   mSize: 9,
   mPosX: 50,
   mPosY: 98,
   label: 'BARTEL LIBRARY', // label
-  fontname: 'sans',
+  fontname: 'sans-serif',
   fontcolor: '#000',
   image: null
 };
