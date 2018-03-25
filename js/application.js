@@ -34,11 +34,10 @@ LIBRARY.create = function(params){
 	return promise;
 }
 
-LIBRARY.delete = function(params){
-	console.log(params);
-	let targetdb = ((this.dataset && this.dataset.targetdb) ? this.dataset.targetdb : false );
-	let docid = ((this.dataset && this.dataset.docid) ? this.dataset.docid : false );
-	let docrev = ((this.dataset && this.dataset.docrev) ? this.dataset.docrev : false );
+LIBRARY.delete = function(obj){
+	let targetdb = ((obj && obj.dataset && obj.dataset.targetdb) ? obj.dataset.targetdb : false );
+	let docid = ((obj && obj.dataset && obj.dataset.docid) ? obj.dataset.docid : false );
+	let docrev = ((obj && obj.dataset && obj.dataset.docrev) ? obj.dataset.docrev : false );
 
 	let promise = new Promise((resolve, reject) => {
 		if (targetdb && docid && docrev) {
