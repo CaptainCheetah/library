@@ -130,7 +130,8 @@ if (LIBRARY.getCredentials()){
       }
     },
 	  "columnDefs": [
-    { "searchable": false, "orderable": false, "targets": 3 }
+    { "searchable": false, "targets": 3 },
+		  {"orderable": false, "targets": 3},
   ],
 		"columns":[
 		  {"data":"doc.title","title":"Title"},
