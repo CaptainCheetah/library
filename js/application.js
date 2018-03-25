@@ -96,6 +96,8 @@ LIBRARY.update = function(params){
 
 LIBRARY.view = function(obj){
 	let docid = ((obj && obj.dataset && obj.dataset.docid) ? obj.dataset.docid : false );
+	let targetdb = ((obj && obj.dataset && obj.dataset.targetdb) ? obj.dataset.targetdb : false );
+	
 	if (docid) {
 	 LIBRARY.qrOpts.text = docid;
 	 let el = kjua(LIBRARY.qrOpts);
@@ -201,7 +203,7 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.author","title":"Author"},
 		  {"data":"doc._id","title":"Actions", "render": function(data, type, row, meta){
 		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
-		      return "<button type='button' class='btn btn-sm btn-outline-secondary' onclick='LIBRARY.view(this)' data-docid='" + data + "'><i class='material-icons'>visibility</i></button>" +
+		      return "<button type='button' class='btn btn-sm btn-outline-secondary' onclick='LIBRARY.view(this)' data-docid='" + data + "' data-targetdb='books'><i class='material-icons'>visibility</i></button>" +
 			     "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)' data-docid='" + data + "' data-docrev='" + row.doc._rev + "' data-targetdb='books'><i class='material-icons'>delete</i></button>";
 		  }},
 		]
