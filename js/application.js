@@ -116,13 +116,13 @@ if (LIBRARY.getCredentials()){
           delete d.search["value"];
           delete d.search["regex"];          
         }
-        console.log(d);
+        // console.log(d);
       },
       "beforeSend": function (xhr) {
         xhr.setRequestHeader ("Authorization", "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`));
       },
        "dataFilter": function(data) {
-        console.log(data);
+        // console.log(data);
         var data = JSON.parse(data);
         data['recordsTotal']= data["total_rows"];
         data['recordsFiltered']= data["total_rows"];
@@ -136,7 +136,12 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.status","title":"Status", "render": function(){
 		    return "<i class='material-icons text-success'>check_circle</i>";
 		  }},
-		  {"data":"doc._id","title":"Actions", "render": function(){
+		  {"data":"doc._id","title":"Actions", "render": function(data, type, row, meta){
+			console.log('render Actions');
+			  console.log(data);
+			  console.log(type);
+			  console.log(row);
+			  console.log(meta);
 		    return "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
 		      "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
 		      "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons'>delete</i></button>";
