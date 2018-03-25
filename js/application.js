@@ -101,7 +101,10 @@ LIBRARY.view = function(obj){
 	 let el = kjua(LIBRARY.qrOpts);
 	 $('#qrCode').empty().append(el);
 		
-	 $('#viewDetails').empty().html('View details');
+	 $('#viewDetails').empty();
+	 $('#viewDetails').append('<p><b>Title</b><br />Book title</p>');
+	 $('#viewDetails').append('<p><b>Author</b><br />Book author</p>');
+	 $('#viewDetails').append('<p><b>Status</b><br />Status</p>');
 	 $('#view').modal('show');
 	}
 }
