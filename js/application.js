@@ -175,6 +175,11 @@ LIBRARY.init = function(){
 		alert('ERROR');
 	});
   });
+	
+  if (LIBRARY.urlParam('books') || LIBRARY.urlParam('borrowers'){
+    console.log('direct link to a book or a borrower');    
+  }
+	
 if (LIBRARY.getCredentials()){
   $('#books').DataTable( {
 	  
