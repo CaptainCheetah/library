@@ -99,7 +99,7 @@ LIBRARY.view = function(obj){
 	let targetdb = ((obj && obj.dataset && obj.dataset.targetdb) ? obj.dataset.targetdb : false );
 	
 	if (docid) {
-	 LIBRARY.qrOpts.text = docid;
+	 LIBRARY.qrOpts.text = `${window.location.origin}${window.location.pathname}?${targetdb}=${docid}`;
 	 let el = kjua(LIBRARY.qrOpts);
 	 $('#qrCode').empty().append(el);
 		
