@@ -35,7 +35,33 @@ LIBRARY.create = function(params){
 }
 
 LIBRARY.delete = function(params){
-	// type - book | borrower
+	console.log(this);
+	console.log(params);
+	let targetDB = ((params && params.target) ? params.target : false );
+	let docID = ((params && params.docID) ? params.docID : false );
+	let docRev = ((params && params.docRev) ? params.docRev : false );
+
+	let promise = new Promise((resolve, reject) => {
+		if (targetDB && docID && docRev) {
+			$.ajax({
+			  type: 'DELETE',
+			  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}/${docID}?rev=${docRev}`,
+			  headers: {
+			    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
+			  },
+			  success: (response) => {
+				resolve(response);
+			  },
+			  error: (error) => {
+				reject(error);
+			  }
+			});
+		} else {
+			reject(new Error('Missing parameters'));
+		}
+	});
+
+	return promise;
 }
 
 LIBRARY.update = function(params){
@@ -144,7 +170,7 @@ if (LIBRARY.getCredentials()){
 			  console.log(meta);
 		    return "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
 		      "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
-		      "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons'>delete</i></button>";
+		      "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)'><i class='material-icons'>delete</i></button>";
 		  }},
 		]
   });
