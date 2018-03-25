@@ -2,6 +2,10 @@ td button {
   margin: 0 5px;
 }
 
+#viewDetails {
+  text-align: center;
+}
+
 /*
 .form-credentials {
   width: 100%;
