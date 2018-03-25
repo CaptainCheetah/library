@@ -129,6 +129,9 @@ if (LIBRARY.getCredentials()){
         return JSON.stringify(data);
       }
     },
+	  "columnDefs": [
+    { "searchable": false, "orderable": false, "targets": 3 }
+  ],
 		"columns":[
 		  {"data":"doc.title","title":"Title"},
 		  {"data":"doc.author","title":"Author"},
