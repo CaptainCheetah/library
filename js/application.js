@@ -96,10 +96,12 @@ LIBRARY.update = function(params){
 
 LIBRARY.view = function(obj){
 	let docid = ((obj && obj.dataset && obj.dataset.docid) ? obj.dataset.docid : false );
-	console.log(docid);
-	// show view modal
-	// render qr code
-	// empty modal on close
+	if (docid) {
+	 LIBRARY.qrOpts.text = docid;
+	 let el = kjua(LIBRARY.qrOpts);
+	 $('#viewDetails').empty().append(el);
+	 $('#view').modal('show');
+	}
 }
 
 LIBRARY.getFormData = function($form){
