@@ -138,8 +138,7 @@ if (LIBRARY.getCredentials()){
 		  }},
 		  {"data":"doc._id", "title":"ID"},
 		  {"title":"Actions", "render": function(){
-		    return 
-		      "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
+		    return "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
 		      "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
 		      "<button type='button' class='btn btn-sm btn-outline-danger'><i class='material-icons'>delete</i></button>";
 		  }},
