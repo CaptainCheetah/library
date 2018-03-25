@@ -35,17 +35,16 @@ LIBRARY.create = function(params){
 }
 
 LIBRARY.delete = function(params){
-	console.log(this);
 	console.log(params);
-	let targetDB = ((params && params.target) ? params.target : false );
-	let docID = ((params && params.docID) ? params.docID : false );
-	let docRev = ((params && params.docRev) ? params.docRev : false );
+	let targetdb = ((this.dataset && this.dataset.targetdb) ? this.dataset.targetdb : false );
+	let docid = ((this.dataset && this.dataset.docid) ? this.dataset.docid : false );
+	let docrev = ((this.dataset && this.dataset.docrev) ? this.dataset.docrev : false );
 
 	let promise = new Promise((resolve, reject) => {
-		if (targetDB && docID && docRev) {
+		if (targetdb && docid && docrev) {
 			$.ajax({
 			  type: 'DELETE',
-			  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}/${docID}?rev=${docRev}`,
+			  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetdb}/${docid}?rev=${docrev}`,
 			  headers: {
 			    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
 			  },
@@ -61,7 +60,13 @@ LIBRARY.delete = function(params){
 		}
 	});
 
-	return promise;
+	promise.then(function(){
+         $('#books').DataTable().ajax.reload();
+	})
+	.catch(function(error){
+		console.log(error);
+		alert('ERROR');
+	});;
 }
 
 LIBRARY.update = function(params){
@@ -168,9 +173,9 @@ if (LIBRARY.getCredentials()){
 			  console.log(type);
 			  console.log(row);
 			  console.log(meta);
-		    return "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
-		      "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
-		      "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)'><i class='material-icons'>delete</i></button>";
+		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>visibility</i></button>" + 
+		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
+		      return "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)' data-docid='" + data + "' data-docrev='" + row.doc._rev + "' data-targetdb='books'><i class='material-icons'>delete</i></button>";
 		  }},
 		]
   });
