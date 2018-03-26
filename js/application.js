@@ -176,7 +176,7 @@ LIBRARY.init = function(){
 	});
   });
 	
-  if (LIBRARY.urlParam('books') || LIBRARY.urlParam('borrowers'){
+  if (LIBRARY.urlParam('books') || LIBRARY.urlParam('borrowers')){
     console.log('direct link to a book or a borrower');    
   }
 	
