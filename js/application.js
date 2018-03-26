@@ -218,8 +218,8 @@ if (LIBRARY.getCredentials()){
 		  {"data":"doc.author","title":"Author"},
 		  {"data":"doc._id","title":"Actions", "render": function(data, type, row, meta){
 		      // "<button type='button' class='btn btn-sm btn-outline-secondary'><i class='material-icons'>edit</i></button>" + 
-		      return "<button type='button' class='btn btn-sm btn-outline-secondary' onclick='LIBRARY.view(this)' data-docid='" + data + "' data-targetdb='books'><i class='material-icons'>visibility</i></button>" +
-			     "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)' data-docid='" + data + "' data-docrev='" + row.doc._rev + "' data-targetdb='books'><i class='material-icons'>delete</i></button>" + 
+		      return "<button type='button' class='btn btn-sm btn-outline-secondary' onclick='LIBRARY.view(this)' data-docid='" + data + "' data-targetdb='books'><i class='material-icons md-18'>visibility</i></button>" +
+			     "<button type='button' class='btn btn-sm btn-outline-danger' onclick='LIBRARY.delete(this)' data-docid='" + data + "' data-docrev='" + row.doc._rev + "' data-targetdb='books'><i class='material-icons md-18'>delete</i></button>" + 
 			     "<a href='" + `${window.location.origin}${window.location.pathname}?books=${data}` + "'>edit</a>";
 		  }},
 		]
