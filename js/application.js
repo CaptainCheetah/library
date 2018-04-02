@@ -36,7 +36,7 @@ LIBRARY.create = function(params){
 		// check for duplicate
 		$.ajax({
 		  type: 'POST',
-		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetDB}`,
+		  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/library`,
 		  data: JSON.stringify(dataObj),
 		  headers: {
 		    "Content-Type": "application/json",
@@ -66,7 +66,7 @@ LIBRARY.delete = function(obj){
 		if (targetdb && docid && docrev) {
 			$.ajax({
 			  type: 'DELETE',
-			  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/${targetdb}/${docid}?rev=${docrev}`,
+			  url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/library/${docid}?rev=${docrev}`,
 			  headers: {
 			    Authorization: "Basic " + btoa(`${LIBRARY.storage.getItem("LIBRARY.username")}:${LIBRARY.storage.getItem("LIBRARY.password")}`)
 			  },
@@ -189,7 +189,7 @@ if (LIBRARY.getCredentials()){
             "serverSide": false,
 	  "lengthChange": false,
     "ajax": {
-      "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/books/_all_docs?include_docs=true`,
+      "url": `https://${LIBRARY.cloudantconfig.account}.cloudant.com/library/_design/byDocType/_view/books?include_docs=true`,
       "dataSrc": "rows",
       "data": function ( d ) {
         d.limit = d.length;
